@@ -6,13 +6,16 @@ public class Principal extends JFrame {
 
     public Principal(){
         super.setTitle("Sapce Invaders - Duba Version");
-        super.setSize(800, 600);
+        super.setSize(1024, 728);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         super.setLocationRelativeTo(null);
         super.setResizable(false);
         super.setVisible(true);
     }
-    
+
+    public static void main(String[] args) {
+        new Principal();
+    }
 
     
 }
