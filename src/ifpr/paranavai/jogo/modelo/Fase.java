@@ -8,7 +8,7 @@ public class Fase {
     private Image imgFundo;
 
     public Fase(){
-        ImageIcon carregadno = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\loading.jpg");
+        ImageIcon imgFundo = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\loading.jpg");
 
 
     }
