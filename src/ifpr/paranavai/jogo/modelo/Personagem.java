@@ -3,6 +3,7 @@ package ifpr.paranavai.jogo.modelo;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class Personagem {
 
@@ -14,6 +15,8 @@ public class Personagem {
     private int larguraImg; // largura da imagem 
     private int alturaImg; // altura da imagem
     private int velocidadeDeslocamento; // velocidade de deslocamento
+    private ArrayList<Tiro> tiros; // lista de tiros
+    private boolean especial; // indica se o personagem está em modo especial 
 
     private static final int POSICAO_INICIAL_X = 150;
     private static final int POSICAO_INICIAL_Y = 200;
@@ -23,6 +26,8 @@ public class Personagem {
         this.posEmX = POSICAO_INICIAL_X;
         this.posEmY = POSICAO_INICIAL_Y;
         this.velocidadeDeslocamento = velocidadeDeslocamento;
+        this.tiros = new ArrayList<Tiro>();
+        this.especial = false;
 
     }
 
@@ -38,7 +43,30 @@ public class Personagem {
         this.posEmY += this.deslocEmY;
     }
 
-    public void mover(KeyEvent tecla){
+    public boolean especialPronto(){
+        return this.especial;
+    }
+
+    public void ativaEspecial(){
+        //Contagem de 30 segundos
+        
+
+
+    }
+
+    public void desativaEspecial(){
+        this.especial = false;
+    }
+
+    public void atirar(){
+        int frenteNave = this.posEmX + this.larguraImg;
+        int meioNave =  this.posEmY + (this.alturaImg / 2);
+
+        Tiro tiro = new Tiro(frenteNave, meioNave);
+        this.tiros.add(tiro);
+    }
+
+    public void mover(KeyEvent tecla){ // movimenta o personagem
         int codigo = tecla.getKeyCode();
 
         switch(codigo){
@@ -70,7 +98,7 @@ public class Personagem {
         }
     }
 
-    public void parar(KeyEvent tecla){
+    public void parar(KeyEvent tecla){ // para o personagem
         int codigo = tecla.getKeyCode();
 
         switch(codigo){
@@ -100,6 +128,14 @@ public class Personagem {
                 this.deslocEmX = 0;
                 break;
         }
+    }
+
+    public ArrayList<Tiro> getTiros() {
+        return this.tiros;
+    }
+
+    public void setTiros(ArrayList<Tiro> tiros) {
+        this.tiros = tiros;
     }
 
     public int getPosEmX() {

@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
 import javax.swing.Timer;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -19,6 +21,7 @@ public class Fase extends JPanel implements KeyListener, ActionListener {
 
         private static final int DESLOCAMENTO = 3; // deslocamento do personagem
         private static final int DELAY = 5; // delay do personagem
+        private static final int LARGURA_JANELA = 728; // largura da janela
 
     public Fase(){
         this.setFocusable(true); // Permite o foco
@@ -39,6 +42,13 @@ public class Fase extends JPanel implements KeyListener, ActionListener {
         Graphics2D graficos = (Graphics2D) g;
         graficos.drawImage(this.imgFundo, 0, 0, null);
         graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosEmX(), this.personagem.getPosEmY(), null);
+        
+        ArrayList<Tiro> tiros = personagem.getTiros();
+        for(Tiro tiro : tiros){
+            tiro.carregar();
+            graficos.drawImage(tiro.getImagem(), tiro.getPosX(), tiro.getPosY(),null);
+        }
+
         g.dispose();
     }
 
@@ -49,7 +59,11 @@ public class Fase extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        this.personagem.mover(e);
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            personagem.atirar();
+        }else{
+            personagem.mover(e);
+        }
     }
 
     @Override
@@ -60,6 +74,15 @@ public class Fase extends JPanel implements KeyListener, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         this.personagem.atualizar();
+
+        ArrayList<Tiro> tiros = personagem.getTiros();
+        for(Tiro tiro: tiros){
+            if(tiro.getPosY() > LARGURA_JANELA){
+                //tiros.remove(tiro);
+            }else{
+                tiro.atualizar();
+            }
+        }
         this.repaint();
     }
 
