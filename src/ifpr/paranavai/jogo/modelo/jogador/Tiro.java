@@ -1,4 +1,4 @@
-package ifpr.paranavai.jogo.modelo;
+package ifpr.paranavai.jogo.modelo.jogador;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;

@@ -1,7 +1,8 @@
-package ifpr.paranavai.jogo.modelo;
+package ifpr.paranavai.jogo.modelo.jogador;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ public class Personagem {
     private int alturaImg; // altura da imagem
     private int velocidadeDeslocamento; // velocidade de deslocamento
     private ArrayList<Tiro> tiros; // lista de tiros
-    private boolean especial; // indica se o personagem está em modo especial 
+    private ArrayList<Especial> especial; // lista de especial
 
     private static final int POSICAO_INICIAL_X = 150;
     private static final int POSICAO_INICIAL_Y = 200;
@@ -27,7 +28,7 @@ public class Personagem {
         this.posEmY = POSICAO_INICIAL_Y;
         this.velocidadeDeslocamento = velocidadeDeslocamento;
         this.tiros = new ArrayList<Tiro>();
-        this.especial = false;
+        this.especial = new ArrayList<Especial>();
 
     }
 
@@ -43,27 +44,20 @@ public class Personagem {
         this.posEmY += this.deslocEmY;
     }
 
-    public boolean especialPronto(){
-        return this.especial;
-    }
-
-    public void ativaEspecial(){
-        //Contagem de 30 segundos
-        
-
-
-    }
-
-    public void desativaEspecial(){
-        this.especial = false;
-    }
-
     public void atirar(){
         int frenteNave = this.posEmX + this.larguraImg;
         int meioNave =  this.posEmY + (this.alturaImg / 2);
 
         Tiro tiro = new Tiro(frenteNave, meioNave);
         this.tiros.add(tiro);
+    }
+
+    public void atiraEspecial(){
+        int frenteNave = this.posEmX + this.larguraImg;
+        int meioNave =  this.posEmY + (this.alturaImg / 2);
+
+        Especial especial = new Especial(frenteNave, meioNave);
+        this.especial.add(especial);
     }
 
     public void mover(KeyEvent tecla){ // movimenta o personagem
@@ -129,6 +123,13 @@ public class Personagem {
                 break;
         }
     }
+    public ArrayList<Especial> getEspecial() {
+        return this.especial;
+    }
+    public void setEspecial(ArrayList<Especial> especial) {
+        this.especial = especial;
+    }
+
 
     public ArrayList<Tiro> getTiros() {
         return this.tiros;
