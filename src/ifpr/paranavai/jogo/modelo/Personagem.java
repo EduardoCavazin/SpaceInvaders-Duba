@@ -26,12 +26,12 @@ public class Personagem extends ElementoGrafico {
     }
 
     public void atualizar(){
-        this.setPosX(this.getPosX() + this.deslocX);
-        this.setPosY(this.getPosY() + this.deslocY);
+        this.setPosX(this.getPosX() + this.getDeslocX());
+        this.setPosY(this.getPosY() + this.getDeslocY());
     }
 
     public void carregar(){
-        ImageIcon referencia = new ImageIcon("recursos\\jogador.png");
+        ImageIcon referencia = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\jogador.png");
         this.setImagem(referencia.getImage());
         this.setLarguraImg(this.getImagem().getWidth(null));
         this.setAlturaImg(this.getImagem().getHeight(null));

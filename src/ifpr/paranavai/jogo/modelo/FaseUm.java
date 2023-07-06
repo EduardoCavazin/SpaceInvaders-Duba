@@ -18,12 +18,12 @@ public class FaseUm extends Fase {
     private boolean emJogo = true;
     private ArrayList<Inimigo> inimigos;
 
-    private static final int LARGURA_TELA = 800;
+    private static final int LARGURA_TELA = 1024;
     private int QTD_INIMIGOS = 10;
 
     public FaseUm(){
         super();
-        ImageIcon referencia = new ImageIcon("recursos\\spcbg.png");
+        ImageIcon referencia = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\spcbg.jpg");
         this.fundo = referencia.getImage();
         personagem = new Personagem();
         personagem.carregar();
@@ -32,6 +32,7 @@ public class FaseUm extends Fase {
         timer.start();
     }
 
+    @Override
     public void paint(Graphics g){
         Graphics2D graficos = (Graphics2D) g;
 
@@ -56,7 +57,7 @@ public class FaseUm extends Fase {
                 graficos.drawImage(inimigo.getImagem(), inimigo.getPosX(), inimigo.getPosY(), this);
             }
         }else{
-            ImageIcon fimJogo = new ImageIcon("recursos\\game-over.png");
+            ImageIcon fimJogo = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\game-over.png");
             graficos.drawImage(fimJogo.getImage(), 0, 0, null);
         }
 
@@ -114,8 +115,6 @@ public class FaseUm extends Fase {
 
     @Override // Ignorarei o método 'keyTyped'
     public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
     }
 
     @Override
@@ -131,22 +130,18 @@ public class FaseUm extends Fase {
         }
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE && podeAtirar){
-            if(podeAtirar){
-                personagem.disparaTiro();
-                podeAtirar = false;
-            }else{
-                personagem.mover(e);
-            }
+            personagem.disparaTiro();
+            podeAtirar = false;
+        }else{
+            personagem.mover(e);
         }
 
         if(e.getKeyCode() == KeyEvent.VK_Q && podeAtirar && temporizador >= 500){
-            if(podeAtirar){
-                personagem.disparaEspec();
-                podeAtirar = false;
-                temporizador = 0;
-            }else{
-                personagem.mover(e);
-            }
+           personagem.disparaEspec();
+           podeAtirar = false;
+           temporizador = 0;
+        }else{
+            personagem.mover(e);
         }
 
     }
@@ -161,15 +156,13 @@ public class FaseUm extends Fase {
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
             podeAtirar = true;
-        }else{
-            personagem.parar(e);
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         temporizador++;
-        personagem.atirar();
+        personagem.atualizar();
 
         ArrayList<Tiro> tiros = personagem.getTiros();
         for(int i = tiros.size() - 1; i >= 0; i--){
