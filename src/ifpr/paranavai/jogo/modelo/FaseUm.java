@@ -61,7 +61,7 @@ public class FaseUm extends Fase {
             }
         }else{
             ImageIcon fimJogo = new ImageIcon("src\\ifpr\\paranavai\\jogo\\recursos\\game-over.png");
-            graficos.drawImage(fimJogo.getImage(), 0, 0, null);
+            graficos.drawImage(fimJogo.getImage(), 250, 100, null);
         }
 
         graficos.setColor(Color.WHITE);
@@ -157,6 +157,26 @@ public class FaseUm extends Fase {
            temporizador = 0;
         }else{
             personagem.mover(e);
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_P){
+            if(timer.isRunning()){
+                emJogo = false;
+                personagem.setVisivel(false);
+                timer.stop();
+            }else{
+                emJogo = true;
+                personagem.setVisivel(true);
+                timer.start();
+            }
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_R){
+            emJogo = true;
+            personagem.carregar();
+            this.inicializarInimigos();
+            pontuacao = 0;
+            timer.restart();
         }
 
     }
