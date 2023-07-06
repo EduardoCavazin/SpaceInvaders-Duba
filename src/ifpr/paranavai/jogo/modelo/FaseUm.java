@@ -8,6 +8,8 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
+import java.awt.Font;
+import java.awt.Color;
 
 public class FaseUm extends Fase {
 
@@ -17,6 +19,7 @@ public class FaseUm extends Fase {
     private int temporizador = 0;
     private boolean emJogo = true;
     private ArrayList<Inimigo> inimigos;
+    private int pontuacao = 0;
 
     private static final int LARGURA_TELA = 1024;
     private int QTD_INIMIGOS = 10;
@@ -61,6 +64,16 @@ public class FaseUm extends Fase {
             graficos.drawImage(fimJogo.getImage(), 0, 0, null);
         }
 
+        graficos.setColor(Color.WHITE);
+        graficos.setFont(new Font("Arial", Font.BOLD, 20));
+        graficos.drawString("PONTUAÇÃO: " + pontuacao, 10, 20);
+
+        if(temporizador >= 500){
+            graficos.setColor(Color.WHITE);
+            graficos.setFont(new Font("Arial", Font.BOLD, 20));
+            graficos.drawString("ESPECIAL DISPONÍVEL",  10, 40);
+        }
+
         graficos.dispose();
     }
 
@@ -87,6 +100,7 @@ public class FaseUm extends Fase {
                 personagem.setVisivel(false);
                 inimigo.setVisivel(false);
                 emJogo = false;
+                pontuacao = 0;
             }
 
             ArrayList<Tiro> tiros = personagem.getTiros();
@@ -97,6 +111,7 @@ public class FaseUm extends Fase {
                 if(formaTiro.intersects(formaInimigo)){
                     inimigo.setVisivel(false);
                     tiro.setVisivel(false);
+                    pontuacao += 10;
                 }
             }
 
@@ -107,7 +122,7 @@ public class FaseUm extends Fase {
 
                 if(formaEspecial.intersects(formaInimigo)){
                     inimigo.setVisivel(false);
-                    especial.setVisivel(false);
+                    pontuacao += 20;
                 }
             }
         }
