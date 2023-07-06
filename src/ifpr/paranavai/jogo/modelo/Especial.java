@@ -12,7 +12,7 @@ public class Especial extends ElementoGrafico{
     }
 
     public void carregar(){
-        ImageIcon referencia = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\bluetiro.png");
+        ImageIcon referencia = new ImageIcon("src\\ifpr\\paranavai\\jogo\\recursos\\especial.png");
         this.setImagem(referencia.getImage());
         this.setLarguraImg(this.getImagem().getWidth(null));
         this.setAlturaImg(this.getImagem().getHeight(null));

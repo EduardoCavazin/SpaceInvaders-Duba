@@ -23,7 +23,7 @@ public class FaseUm extends Fase {
 
     public FaseUm(){
         super();
-        ImageIcon referencia = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\spcbg.jpg");
+        ImageIcon referencia = new ImageIcon("src\\ifpr\\paranavai\\jogo\\recursos\\spcbg.jpg");
         this.fundo = referencia.getImage();
         personagem = new Personagem();
         personagem.carregar();
@@ -57,7 +57,7 @@ public class FaseUm extends Fase {
                 graficos.drawImage(inimigo.getImagem(), inimigo.getPosX(), inimigo.getPosY(), this);
             }
         }else{
-            ImageIcon fimJogo = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\game-over.png");
+            ImageIcon fimJogo = new ImageIcon("src\\ifpr\\paranavai\\jogo\\recursos\\game-over.png");
             graficos.drawImage(fimJogo.getImage(), 0, 0, null);
         }
 

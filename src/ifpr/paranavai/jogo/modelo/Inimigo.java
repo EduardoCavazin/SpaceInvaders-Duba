@@ -16,7 +16,7 @@ public class Inimigo extends ElementoGrafico{
     }
 
     public void carregar() {
-        ImageIcon referencia = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\inibigo.png");
+        ImageIcon referencia = new ImageIcon("src\\ifpr\\paranavai\\jogo\\recursos\\inibigo.png");
         this.setImagem(referencia.getImage());
         this.setLarguraImg(this.getImagem().getWidth(null));
         this.setAlturaImg(this.getImagem().getHeight(null));

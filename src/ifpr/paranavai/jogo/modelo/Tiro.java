@@ -12,7 +12,7 @@ public class Tiro extends ElementoGrafico {
     }
 
     public void carregar(){
-        ImageIcon referencia = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\blaster1.png");
+        ImageIcon referencia = new ImageIcon("src\\ifpr\\paranavai\\jogo\\recursos\\tiro.png");
         this.setImagem(referencia.getImage());
         this.setLarguraImg(this.getImagem().getWidth(null));
         this.setAlturaImg(this.getImagem().getHeight(null));

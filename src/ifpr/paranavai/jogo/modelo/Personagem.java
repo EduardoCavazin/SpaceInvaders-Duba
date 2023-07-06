@@ -31,7 +31,7 @@ public class Personagem extends ElementoGrafico {
     }
 
     public void carregar(){
-        ImageIcon referencia = new ImageIcon("C:\\Users\\Duba\\Desktop\\Testes\\POO\\Jogo\\Recursos\\jogador.png");
+        ImageIcon referencia = new ImageIcon("src\\ifpr\\paranavai\\jogo\\recursos\\jogador.png");
         this.setImagem(referencia.getImage());
         this.setLarguraImg(this.getImagem().getWidth(null));
         this.setAlturaImg(this.getImagem().getHeight(null));
